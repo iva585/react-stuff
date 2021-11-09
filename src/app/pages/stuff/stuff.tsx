@@ -3,5 +3,5 @@ import { useParams } from 'react-router-dom';
 
 export default function Stuff(): JSX.Element {
   const { myStuff } = useParams();
-  return <p>{myStuff}</p>;
+  return <p>Stuff: {myStuff}</p>;
 }
