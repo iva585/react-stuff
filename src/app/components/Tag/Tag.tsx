@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Tag = styled.span`
+const Tag = styled.li`
   background: #ee36d5 35%;
   padding: 5px;
   border-radius: 2px;
