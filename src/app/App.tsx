@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Dashboard from './pages/Dashboard/Dashboard';
 import Stuff from './pages/stuff/stuff';
 
 function App(): JSX.Element {
@@ -7,7 +8,7 @@ function App(): JSX.Element {
     <BrowserRouter>
       Landingpage
       <Routes>
-        <Route path="/" element={<p>Main</p>} />
+        <Route path="/" element={<Dashboard />} />
         <Route
           path="/about"
           element={<Link to="/contact">Contact here</Link>}

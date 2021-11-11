@@ -3,26 +3,27 @@ import styled from 'styled-components';
 import Tag from '../Tag/Tag';
 
 type CardProps = {
-  content: { name: string; description: string; categories?: string[] };
+  name: string;
+  description: string;
+  categories?: string[];
 };
 
 type SingleStringChildProps = {
   children: string;
 };
-
-function Card({ content }: CardProps): JSX.Element {
+export default function Card({
+  name,
+  description,
+  categories,
+}: CardProps): JSX.Element {
   return (
     <StyledCard>
-      <StyledTitle>{content.name}</StyledTitle>
-      <p>{content.description}</p>
-      {content.categories?.map((category) => (
-        <Tag>{category}</Tag>
-      ))}
+      <StyledTitle>{name}</StyledTitle>
+      <p>{description}</p>
+      {categories && categories.map((category) => <Tag>{category}</Tag>)}
     </StyledCard>
   );
 }
-
-export default Card;
 
 const StyledTitle = styled.h5<SingleStringChildProps>`
   font-size: 16px;
@@ -32,6 +33,7 @@ const StyledTitle = styled.h5<SingleStringChildProps>`
 `;
 
 const StyledCard = styled.div<Partial<CardProps>>`
+  margin: 20px;
   background: rgb(2, 32, 103);
   background: linear-gradient(
     90deg,
