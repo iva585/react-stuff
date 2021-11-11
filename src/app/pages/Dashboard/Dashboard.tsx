@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '../../components/Card/Card';
+import type { Thing } from '../../types';
 
 export default function Dashboard(): JSX.Element {
-  const exampleContentRegular = {
-    name: 'Books',
-    description: 'use as standing table',
-  };
+  const [things, setThings] = useState<Thing[] | null>(null);
+  //const [things, setThings] = useState<Thing[]>([]);
+
+  useEffect(() => {
+    async function fetchThings() {
+      const response = await fetch('https://json-server.neuefische.de/stuff');
+      const fetchedThings = await response.json();
+      setThings(fetchedThings);
+    }
+    fetchThings();
+  }, []);
+
+  useEffect(() => {
+    console.log('fetched things 🎉');
+  }, [things]);
+
   return (
     <main>
       <h1>Dashboard</h1>
-      <Card content={exampleContentRegular} />
+      {things &&
+        things.map((thing) => (
+          <Card name={thing.name} description={thing.description} />
+        ))}
     </main>
   );
 }
