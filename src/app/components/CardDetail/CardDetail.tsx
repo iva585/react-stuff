@@ -1,31 +1,34 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Tag from '../Tag/Tag';
 import styled from 'styled-components';
 
-type CardProps = {
+type CardDetailProps = {
   name: string;
   description: string;
+  categories: string[];
 };
 
-type SingleStringChildProps = {
-  children: string;
-};
-export default function Card({ name, description }: CardProps): JSX.Element {
+export default function CardDetail({
+  name,
+  description,
+  categories,
+}: CardDetailProps): JSX.Element {
   return (
     <StyledCard>
-      <StyledTitle>{name}</StyledTitle>
+      <Link to={'/'}>Back</Link>
+      <h2>{name}</h2>
       <p>{description}</p>
+      <ul>
+        {categories.map((category) => (
+          <Tag key={category}>{category}</Tag>
+        ))}
+      </ul>
     </StyledCard>
   );
 }
 
-const StyledTitle = styled.h5<SingleStringChildProps>`
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: bold;
-  padding: 0;
-`;
-
-const StyledCard = styled.div<Partial<CardProps>>`
+const StyledCard = styled.div`
   margin: 20px;
   background: rgb(2, 32, 103);
   background: linear-gradient(
