@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Card from '../../components/Card/Card';
 import useFetch from '../../hooks/useFetch';
+import type { Thing } from '../../types';
 
 export default function Dashboard(): JSX.Element {
-  const things = useFetch('https://json-server.neuefische.de/stuff');
+  const things = useFetch<Thing[]>('https://json-server.neuefische.de/stuff');
 
   return (
     <main>
