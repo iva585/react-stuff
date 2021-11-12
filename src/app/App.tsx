@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Stuff from './pages/stuff/stuff';
+import Add from './pages/Add/Add';
 
 function App(): JSX.Element {
   return (
@@ -12,6 +13,7 @@ function App(): JSX.Element {
         <Route path="stuff">
           <Route path=":thingID" element={<Stuff />} />
         </Route>
+        <Route path="/add" element={<Add />} />
       </Routes>
     </BrowserRouter>
   );
