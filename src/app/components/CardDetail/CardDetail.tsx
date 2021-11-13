@@ -6,7 +6,7 @@ import styled from 'styled-components';
 type CardDetailProps = {
   name: string;
   description: string;
-  categories: string[];
+  categories?: string[];
 };
 
 export default function CardDetail({
@@ -20,7 +20,7 @@ export default function CardDetail({
       <h2>{name}</h2>
       <p>{description}</p>
       <ul>
-        {categories.map((category) => (
+        {categories?.map((category) => (
           <Tag key={category}>{category}</Tag>
         ))}
       </ul>
