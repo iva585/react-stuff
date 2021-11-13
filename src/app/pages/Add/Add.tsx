@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
 export default function Add(): JSX.Element {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const navigate = useNavigate();
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -12,6 +14,7 @@ export default function Add(): JSX.Element {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, description }),
     });
+    navigate('/');
   }
 
   return (
