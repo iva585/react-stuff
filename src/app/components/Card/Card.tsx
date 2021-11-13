@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import DeleteButton from '../Button/Button';
 
 type CardProps = {
   name: string;
@@ -12,7 +13,7 @@ type SingleStringChildProps = {
 export default function Card({ name, description }: CardProps): JSX.Element {
   return (
     <StyledCard>
-      <Delete>x</Delete>
+      <DeleteButton>x</DeleteButton>
       <StyledTitle>{name}</StyledTitle>
       <p>{description}</p>
     </StyledCard>
@@ -40,15 +41,4 @@ const StyledCard = styled.div<Partial<CardProps>>`
   border-radius: 5px;
   box-shadow: 0px 10px 13px -7px #000000,
     5px 5px 15px 5px rgba(39, 43, 145, 0.12);
-`;
-
-const Delete = styled.button`
-  background: #ee36d5 35%;
-  width: 30px;
-  height: 30px;
-  font-size: 14px;
-  border-radius: 50%;
-  text-transform: uppercase;
-  color: white;
-  margin: 2px 200px -60px;
 `;
