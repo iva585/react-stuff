@@ -8,7 +8,7 @@ export default function Add(): JSX.Element {
       <StyledInput type="text" />
       <StyledLabel>Description:</StyledLabel>
       <StyledInput type="text" />
-      <StyledSubmit>Submit</StyledSubmit>
+      <StyledSubmit type="submit" />
     </StyledForm>
   );
 }
@@ -43,7 +43,7 @@ const StyledInput = styled.input`
   border-radius: 2px;
 `;
 
-const StyledSubmit = styled.button`
+const StyledSubmit = styled.input`
   background: #ee36d5 35%;
   padding: 5px;
   border-radius: 2px;
