@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 export default function Add(): JSX.Element {
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    await fetch('https://json-server.neuefische.de/stuff', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, description }),
+    });
+  }
+
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit}>
       <StyledLabel>Name:</StyledLabel>
-      <StyledInput type="text" />
+      <StyledInput
+        value={name}
+        onChange={(event) => setName(event.target.value)}
+        placeholder="Whats your item called?"
+        type="text"
+      />
       <StyledLabel>Description:</StyledLabel>
-      <StyledInput type="text" />
+      <StyledInput
+        value={description}
+        onChange={(event) => setDescription(event.target.value)}
+        placeholder="Tell me more!"
+        type="text"
+      />
       <StyledSubmit type="submit" />
     </StyledForm>
   );
