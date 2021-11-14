@@ -1,19 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
+import type { Thing } from '../../types';
 import DeleteButton from '../Button/Button';
-
-type CardProps = {
-  name: string;
-  description: string;
-};
 
 type SingleStringChildProps = {
   children: string;
 };
-export default function Card({ name, description }: CardProps): JSX.Element {
+
+async function handleClick(id: number) {
+  await fetch(`https://json-server.neuefische.de/stuff/${id}`, {
+    method: 'DELETE',
+  });
+}
+
+export default function Card({ id, name, description }: Thing): JSX.Element {
   return (
     <StyledCard>
-      <DeleteButton>x</DeleteButton>
+      <DeleteButton onClick={() => handleClick(id)}>x</DeleteButton>
       <StyledTitle>{name}</StyledTitle>
       <p>{description}</p>
     </StyledCard>
@@ -27,7 +30,7 @@ const StyledTitle = styled.h5<SingleStringChildProps>`
   padding: 0;
 `;
 
-const StyledCard = styled.div<Partial<CardProps>>`
+const StyledCard = styled.div<Partial<Thing>>`
   margin: 20px;
   background: linear-gradient(
     90deg,

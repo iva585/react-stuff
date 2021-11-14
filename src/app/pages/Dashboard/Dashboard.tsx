@@ -13,7 +13,7 @@ export default function Dashboard(): JSX.Element {
       {things &&
         things.map((thing) => (
           <Link key={thing.id} to={`/stuff/${thing.id}`}>
-            <Card name={thing.name} description={thing.description} />
+            <Card {...thing} />
           </Link>
         ))}
     </main>

@@ -2,18 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Tag from '../Tag/Tag';
 import styled from 'styled-components';
-
-type CardDetailProps = {
-  name: string;
-  description: string;
-  categories?: string[];
-};
+import type { Thing } from '../../types';
 
 export default function CardDetail({
   name,
   description,
   categories,
-}: CardDetailProps): JSX.Element {
+}: Thing): JSX.Element {
   return (
     <StyledCard>
       <Link to={'/'}>Back</Link>

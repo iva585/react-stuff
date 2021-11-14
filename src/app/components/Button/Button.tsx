@@ -1,8 +1,10 @@
-//import type { ReactNode } from 'react';
-//import React from 'react';
 import styled from 'styled-components';
 
-const DeleteButton = styled.button`
+type DeleteButtonProps = { thingId: number };
+
+const DeleteButton = styled.button.attrs((props: DeleteButtonProps) => ({
+  thingId: props.thingId,
+}))`
   background: #ee36d5 35%;
   width: 30px;
   height: 30px;

@@ -10,15 +10,5 @@ export default function Stuff(): JSX.Element {
     `https://json-server.neuefische.de/stuff/${thingID}`
   );
 
-  return (
-    <>
-      {thing && (
-        <CardDetail
-          name={thing.name}
-          description={thing.description}
-          categories={thing.categories}
-        />
-      )}
-    </>
-  );
+  return <>{thing && <CardDetail {...thing} />}</>;
 }
