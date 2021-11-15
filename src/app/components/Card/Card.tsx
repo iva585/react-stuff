@@ -7,7 +7,7 @@ type SingleStringChildProps = {
   children: string;
 };
 
-async function handleClick(id: number) {
+async function handleDelete(id: number) {
   await fetch(`https://json-server.neuefische.de/stuff/${id}`, {
     method: 'DELETE',
   });
@@ -16,7 +16,7 @@ async function handleClick(id: number) {
 export default function Card({ id, name, description }: Thing): JSX.Element {
   return (
     <StyledCard>
-      <DeleteButton onClick={() => handleClick(id)}>x</DeleteButton>
+      <DeleteButton onClick={() => handleDelete(id)}>x</DeleteButton>
       <StyledTitle>{name}</StyledTitle>
       <p>{description}</p>
     </StyledCard>
